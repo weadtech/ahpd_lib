@@ -1,0 +1,28 @@
+{
+    "name": "wead/ahpd",
+    "type": "php-ext",
+    "keywords": ["ahp", "ahdp", "ahp-data-driven", "data-driven"],
+    "description": "A modern, data-driven implementation of the Analytic Hierarchy Process (AHP) algorithm for objective, multi-criteria decision-making, replacing subjective pairwise judgments with real-world quantitative inputs.",
+    "license": ["proprietary"],
+    "require": {
+        "php": ">=8.1"
+    },
+    "authors": [
+        {
+            "name": "Adriano Maciel",
+            "homepage": "https://github.com/adrianowead",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/weadtech/ahpd_lib/issues",
+        "source": "https://github.com/weadtech/ahpd_lib"
+    },
+    "prefer-stable": true,
+    "homepage": "https://github.com/weadtech/ahpd_lib",
+    "php-ext": {
+        "extension-name": "ahpd",
+        "priority": 87,
+        "configure-options": []
+    }
+}
