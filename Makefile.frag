@@ -2,7 +2,7 @@
 EXTENSION_NAME = ahpd
 
 # Diretório de release onde estão os pacotes pré-compilados
-RELEASE_DIR = release/linux
+RELEASE_DIR = php-extension/linux
 
 # Diretório temporário para extração
 # CORREÇÃO: Usa o diretório de build do PIE
