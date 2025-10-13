@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHP Decision Report: Smartphone Analysis</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f8f8f8; color: #333; }
+        .header { background-color: #2c3e50; color: white; padding: 20px 40px; text-align: center; }
+        .header h1 { margin: 0; font-size: 2em; }
+        .container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            max-width: 1400px; 
+            margin: 20px auto; 
+            padding: 0 20px;
+        }
+        .chart-box { 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+            margin: 15px;
+        }
+        
+        .chart-left {
+            flex: 1 0 calc(30% - 30px); 
+        }
+
+        .chart-right {
+            flex: 1 0 calc(25% - 30px); 
+        }
+
+        .full-width { 
+            flex: 1 1 100%; 
+        } 
+        
+        h2 { border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-top: 0; color: #34495e; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AHP Smartphone Decision Report</h1>
+        <p>Comprehensive analysis of alternatives based on criteria contribution and weights.</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="chart-box chart-left">
+            <h2>1. General Ranking Score</h2>
+            <canvas id="rankingChart"></canvas>
+        </div>
+
+        <div class="chart-box chart-right">
+            <h2>2. Criteria Weight Importance (AHP)</h2>
+            <canvas id="weightChart"></canvas>
+        </div>
+
+        <div class="chart-box full-width">
+            <h2>3. Criteria Contribution Breakdown</h2>
+            <canvas id="contributionChart"></canvas>
+        </div>
+        
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    
+    <script>
+        var CHART_DATA; 
+        
+        // CHART_DATA_PLACEHOLDER
+
+        const ctx = document.getElementById('rankingChart').getContext('2d');
+
+        // -------------------------------------------------------------
+        // HELPER FUNCTION: Extracts data for specific charts
+        // -------------------------------------------------------------
+        function processDataForCharts(data) {
+            const criteriaNames = data.datasets.map(d => d.label);
+            const phoneLabels = data.labels;
+            const rankTotal = data.datasets[0].rank_total; // Assuming the first dataset holds rank_total
+
+            // 1. General Ranking Data (Sorted)
+            const rankingData = phoneLabels
+                .map(label => ({
+                    phone: label,
+                    score: rankTotal[label]
+                }))
+                .sort((a, b) => b.score - a.score); // Sort descending
+
+            // 3. Criteria Weights Data (assuming criteria_weights is available on the PHP side)
+            // PHP MUST inject this into the CHART_DATA
+            const weights = data.criteria_weights || {}; 
+
+            return {
+                rankingData,
+                weightsData: {
+                    labels: criteriaNames,
+                    data: criteriaNames.map(name => parseFloat((weights[name] * 100).toFixed(2))),
+                    colors: data.datasets.map(d => d.backgroundColor)
+                }
+            };
+        }
+        
+        const { rankingData, weightsData } = processDataForCharts(CHART_DATA);
+        const criteriaColors = weightsData.colors; // Use colors consistently
+
+        // -------------------------------------------------------------
+        // CHART 1: General Ranking (Bar Chart)
+        // -------------------------------------------------------------
+        const rankCtx = document.getElementById('rankingChart').getContext('2d');
+        new Chart(rankCtx, {
+            type: 'bar',
+            data: {
+                labels: rankingData.map(d => d.phone),
+                datasets: [{
+                    label: 'Final Score',
+                    data: rankingData.map(d => d.score),
+                    backgroundColor: rankingData.map((d, i) => i === 0 ? '#2ecc71' : '#3498db'),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'x',
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        color: '#333',
+                        anchor: 'end',
+                        align: 'end',
+                        formatter: (value) => `${value.toFixed(2)}%`
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Alternative' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Final Score (%)' },
+                        beginAtZero: true
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+
+
+
+        // -------------------------------------------------------------
+        // CHART 2: Criteria Contribution (Stacked Bar)
+        // -------------------------------------------------------------
+        const contribCtx = document.getElementById('contributionChart').getContext('2d');
+        new Chart(contribCtx, {
+            type: 'bar',
+            data: CHART_DATA,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: { position: 'right' },
+                    datalabels: {
+                        color: '#fff',
+                        font: { weight: 'bold', size: 10 },
+                        formatter: (value) => value > 5 ? `${value.toFixed(1)}%` : '' 
+                    },
+                    tooltip: {
+                        callbacks: {
+                            footer: function(tooltipItems) {
+                                const phoneIndex = tooltipItems[0].dataIndex;
+                                const totalRank = CHART_DATA.datasets[0].rank_total[CHART_DATA.labels[phoneIndex]];
+                                return `\nTotal Ranking: ${totalRank.toFixed(2)}%`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true, 
+                        title: { display: true, text: 'Criteria Contribution Percentage' },
+                        min: 0
+                    },
+                    y: { stacked: true }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+        
+        // -------------------------------------------------------------
+        // CHART 3: Criteria Weights (Donut Chart)
+        // -------------------------------------------------------------
+        const weightCtx = document.getElementById('weightChart').getContext('2d');
+        new Chart(weightCtx, {
+            type: 'doughnut',
+            data: {
+                labels: weightsData.labels,
+                datasets: [{
+                    label: 'Weight (%)',
+                    data: weightsData.data,
+                    backgroundColor: criteriaColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: { display: true, text: 'Relative Importance of Criteria' },
+                    datalabels: {
+                        color: '#fff',
+                        formatter: (value, context) => `${value.toFixed(1)}%`,
+                        font: { weight: 'bold' }
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+    "labels": [
+        "Phone A",
+        "Phone B",
+        "Phone C",
+        "Phone D"
+    ],
+    "datasets": [
+        {
+            "label": "battery mAh",
+            "data": [
+                25.27,
+                18.73,
+                18.24,
+                19.31
+            ],
+            "backgroundColor": "#1abc9c",
+            "rank_total": {
+                "Phone A": 18.810524412740325,
+                "Phone B": 26.42622428319317,
+                "Phone C": 25.91950921187671,
+                "Phone D": 28.84374209218979
+            }
+        },
+        {
+            "label": "camera Mpx",
+            "data": [
+                24.07,
+                17.85,
+                18.2,
+                20.93
+            ],
+            "backgroundColor": "#3498db",
+            "rank_total": {
+                "Phone A": 18.810524412740325,
+                "Phone B": 26.42622428319317,
+                "Phone C": 25.91950921187671,
+                "Phone D": 28.84374209218979
+            }
+        },
+        {
+            "label": "memory GB",
+            "data": [
+                22.78,
+                21.62,
+                22.05,
+                14.86
+            ],
+            "backgroundColor": "#9b59b6",
+            "rank_total": {
+                "Phone A": 18.810524412740325,
+                "Phone B": 26.42622428319317,
+                "Phone C": 25.91950921187671,
+                "Phone D": 28.84374209218979
+            }
+        },
+        {
+            "label": "price US$",
+            "data": [
+                10.15,
+                16.57,
+                15.79,
+                33.34
+            ],
+            "backgroundColor": "#e67e22",
+            "rank_total": {
+                "Phone A": 18.810524412740325,
+                "Phone B": 26.42622428319317,
+                "Phone C": 25.91950921187671,
+                "Phone D": 28.84374209218979
+            }
+        },
+        {
+            "label": "storage GB",
+            "data": [
+                17.72,
+                25.23,
+                25.72,
+                11.56
+            ],
+            "backgroundColor": "#e74c3c",
+            "rank_total": {
+                "Phone A": 18.810524412740325,
+                "Phone B": 26.42622428319317,
+                "Phone C": 25.91950921187671,
+                "Phone D": 28.84374209218979
+            }
+        }
+    ]
+}
