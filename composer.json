@@ -22,6 +22,11 @@
     "homepage": "https://github.com/weadtech/ahpd_lib",
     "php-ext": {
         "extension-name": "ahpd",
+        "support-zts": true,
+        "support-nts": true,
+        "os-families": [
+            "linux"
+        ],
         "priority": 87,
         "configure-options": []
     }
