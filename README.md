@@ -57,6 +57,25 @@ AHPd transforms raw data into strategic insight through a simple process:
 
 > 💡 **AHPd Explanation:** Product B won because the *Performance* criterion showed the greatest difference between candidates, thus gaining the highest automatic weight, overshadowing the contribution of Product C's slightly better price.
 
+### Example visual (with Chart.js)
+
+This simple example demonstrates the decision to purchase a device, comparing the features that the **user considers relevant**.
+
+| Option  | price US$ (min) | storage GB (max) | memory GB (max) | camera Mpx (max) | battery mAh (max) |
+|----------|-----------------|------------------|------------------|------------------|-------------------|
+| Phone A  | 9494            | 128              | 6                | 48               | 4323              |
+| Phone B  | 4139            | 256              | 8                | 50               | 4500              |
+| Phone C  | 4429            | 256              | 8                | 50               | 4300              |
+| Phone D  | 1885            | 128              | 6                | 64               | 5065              |
+
+Note that the data was passed **without** any transformation, **without** normalization, **exactly as it is in the real world**.
+
+The user only needed to indicate whether a lower "price" is better or a larger "battery" is better.
+
+The screenshot below intuitively shows the results, allowing you to see **precisely how much each feature (criterion)** contributed to the final ranking score. **This visually validates the weights calculated by AHPd**.
+
+![./php-extension/example/print-chart.png](./php-extension/example/print-chart.png)
+
 ## 🧾 Practical Use Cases
 
 | Area | Application | Strategic Outcome |

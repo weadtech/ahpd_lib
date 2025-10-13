@@ -264,6 +264,14 @@ minArray
 )
 ```
 
+### Example visual (with Chart.js)
+
+The screenshot below intuitively shows the results of the analysis and how each criterion influenced the final decision.
+
+The screenshot below intuitively shows the results, allowing you to see **precisely how much each feature (criterion)** contributed to the final ranking score. **This visually validates the weights calculated by AHPd**.
+
+![./example/print-chart.png](./example/print-chart.png)
+
 ### 1 Final Rank: Overall Priority
 
 This array shows the overall priority weight for each alternative (phone), calculated by the AHP method. The sum of the weights equals 1.0 (or 100%).
