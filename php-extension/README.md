@@ -342,18 +342,18 @@ This table shows, for each phone, the percentage contribution of its attribute v
 | | camera Mpx | $24.07\%$ | $48$ Mpx |
 | | memory GB | $22.78\%$ | $6$ GB |
 | | storage GB | $17.72\%$ | $128$ GB |
-| | price US$ | $10.15\%$ | $\$9494$ |
+| | price US$ | $10.15\%$ | $9494$ |
 | **Phone B** | storage GB | $25.23\%$ | $256$ GB |
 | | memory GB | $21.62\%$ | $8$ GB |
 | | camera Mpx | $17.85\%$ | $50$ Mpx |
 | | battery mAh | $18.73\%$ | $4500$ mAh |
-| | price US$ | $16.57\%$ | $\$4139$ |
+| | price US$ | $16.57\%$ | $4139$ |
 | **Phone C** | storage GB | $25.72\%$ | $256$ GB |
 | | memory GB | $22.05\%$ | $8$ GB |
 | | camera Mpx | $18.20\%$ | $50$ Mpx |
 | | battery mAh | $18.24\%$ | $4300$ mAh |
-| | price US$ | $15.79\%$ | $\$4429$ |
-| **Phone D** | **price US$** | $\mathbf{33.34\%}$ | $\mathbf{\$1885}$ |
+| | price US$ | $15.79\%$ | $4429$ |
+| **Phone D** | **price US$** | $\mathbf{33.34\%}$ | $\mathbf{1885}$ |
 | | camera Mpx | $20.93\%$ | $64$ Mpx |
 | | battery mAh | $19.31\%$ | $5065$ mAh |
 | | memory GB | $14.86\%$ | $6$ GB |

@@ -106,14 +106,6 @@ The table below summarizes the key differences that make AHPd the ideal choice f
 | **Primary Goal** | Multi-criteria **Optimization** and **Auditable Ranking** based on performance. | Multi-criteria **Prioritization** based on perceived importance. |
 | **Output** | Clear **Percentage Ranking** + Detailed **Contribution Reports** per criterion. | Priority Vector (Raw Weights) + Consistency Ratio (CR). |
 
-## 🧬 Licensing and Origin
-
-AHPd is inspired by the classic method proposed by **Thomas L. Saaty**, but implements a **data-oriented evolution**, making it uniquely suited for **automated decision systems**, **machine learning pipelines**, and **large-scale multi-criteria analysis**.
-
-Developed and maintained by **Wead Technology® ([https://wead.tech](https://wead.tech))**, featuring a high-performance **C/Rust** core and multiple interfaces.
-
-Perfeito. Aqui está a versão ajustada e refinada da seção, mantendo o tom corporativo e coerente com o resto da documentação — agora refletindo **uso comercial livre**, mas **monetização via suporte e integrações avançadas**:
-
 ### 🧬 Licensing & Availability
 
 The **AHPd** system is **free to use** for both personal and commercial applications.
