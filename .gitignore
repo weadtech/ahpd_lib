@@ -110,7 +110,7 @@ ext/phar/phar.php
 main/php_config.h
 main/php_config.h.in
 
-!release/**
+!php-extension/**
 
 configure.ac
 dummy.dep
