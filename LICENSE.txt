@@ -1,0 +1,11 @@
+Copyright (c) 2025 Wead Technology®
+
+All rights reserved.
+
+This software is proprietary and confidential. No part of this code,
+binary, or documentation may be copied, modified, distributed,
+transmitted, or used without the express written permission of
+Wead Technology®.
+
+This software contains components licensed under MIT, Apache-2.0, BSD, and other permissive licenses.
+The full list of third-party components and their notices is available in NOTICE.md
