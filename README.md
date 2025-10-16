@@ -125,12 +125,18 @@ The table below summarizes the key differences that make AHPd the ideal choice f
 | **Primary Goal** | Multi-criteria **Optimization** and **Auditable Ranking** based on performance. | Multi-criteria **Prioritization** based on perceived importance. |
 | **Output** | Clear **Percentage Ranking** + Detailed **Contribution Reports** per criterion. | Priority Vector (Raw Weights) + Consistency Ratio (CR). |
 
-### 🧬 Licensing & Availability
+## 🧬 Licensing & Availability
 
-The **AHPd** system is **free to use** for both personal and commercial applications.
-Its high-performance computational core remains **proprietary to Wead Technology®**, ensuring consistency, integrity, and continuous evolution.
+The **use** and **distribution** of the AHPd system are free for both personal and commercial purposes. Compiled binaries, extensions, and packaged libraries may be integrated into third-party products or services without additional licensing fees.
 
-While usage is unrestricted, **enterprise services** — including **technical support**, **custom integration**, and **cloud-based AHPd API access** — are available for organizations seeking enhanced performance, reliability, and dedicated assistance.
+However, the high-performance computational core and underlying source code remain the **exclusive intellectual property of Wead Technology®**, ensuring integrity, consistency, and continuous innovation.
 
-For partnerships, OEM integration, or large-scale deployment support, **enterprise collaboration opportunities** are available upon request.
+### Required Attribution
 
+For the use of AHPd, **mandatory attribution** to Wead Technology® must be included in your documentation, "About" section, or any licensing notices related to the product that integrates it.
+
+### Enterprise Services
+
+Enterprise-grade services — including **dedicated technical support**, **OEM integration**, **private cloud APIs**, and **performance optimization** — are available for organizations seeking enhanced scalability, reliability, and assistance.
+
+For partnerships, large-scale deployments, or OEM licensing, contact Wead Technology® to discuss collaboration opportunities.

@@ -1,11 +1,24 @@
-Copyright (c) 2025 Wead Technology®
+Legal Notice
 
-All rights reserved.
+Copyright (c) 2025 Wead Technology® All rights reserved.
 
-This software is proprietary and confidential. No part of this code,
-binary, or documentation may be copied, modified, distributed,
-transmitted, or used without the express written permission of
-Wead Technology®.
+This software, including its high-performance computational core, is proprietary and confidential. The underlying source code is protected by intellectual property laws and may not be copied, modified, reverse-engineered, or distributed without the express written permission of Wead Technology®.
 
-This software contains components licensed under MIT, Apache-2.0, BSD, and other permissive licenses.
-The full list of third-party components and their notices is available in NOTICE.md
+Permitted Use:
+Distribution of the compiled binary, extension, or library (DLL/SO) is permitted and may be used freely for personal and commercial purposes, provided that Wead Technology® is properly attributed in the product's documentation, "About" section, or licensing notices. This permitted use is subject to the full terms of use available at https://wead.com.br or https://wead.tech.
+
+This software contains components licensed under MIT, Apache-2.0, BSD, and other permissive licenses. The full list of third-party components and their notices is available in NOTICE.md.
+
+
+
+Aviso Legal
+
+Copyright (c) 2025 Wead Technology® Todos os direitos reservados.
+
+Este software, incluindo seu núcleo computacional de alto desempenho, é proprietário e confidencial. O código-fonte subjacente é protegido por leis de propriedade intelectual e não pode ser copiado, modificado, submetido à engenharia reversa ou distribuído sem a permissão expressa por escrito da Wead Technology®.
+
+Uso Permitido:
+A distribuição do binário compilado, extensão ou biblioteca (DLL/SO) é permitida e pode ser utilizada livremente para fins pessoais e comerciais, desde que a Wead Technology® seja devidamente atribuída na documentação, seção "Sobre" ou nos avisos de licenciamento do produto. Este uso permitido está sujeito aos termos de uso completos disponíveis em https://wead.com.br ou https://wead.tech.
+
+Este software contém componentes licenciados sob MIT, Apache-2.0, BSD e outras licenças permissivas. A lista completa de componentes de terceiros e seus avisos está disponível no arquivo NOTICE.md.
+
