@@ -25,7 +25,8 @@
         "support-zts": true,
         "support-nts": true,
         "os-families": [
-            "linux"
+            "linux",
+            "windows"
         ],
         "priority": 87,
         "configure-options": []
