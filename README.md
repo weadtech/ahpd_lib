@@ -94,7 +94,7 @@ AHPd is designed to be platform-agnostic, supporting several integration paths:
 | :--- | :--- | :--- |
 | **PHP Native Extension** | Native C/Rust implementation for maximum performance within PHP systems. | [View PHP Documentation](./php-extension/README.md) |
 | **REST API** | JSON-compatible web service for integration with any programming language or BI tool. | [Online Service](https://ahpbi.wead.tech/api-rest) |
-| **CLI Application** | Command-line tool for direct use in automated pipelines and scripts. | *(Under Development)* |
+| **CLI Application** | Command-line tool for direct use in automated pipelines and scripts. | [AHPd CLI](https://github.com/weadtech/ahpd_cli_public) |
 | **GUI Application** | Desktop application for end-user analysis and reporting. | *(Planned)* |
 
 ## 🔍 Transparency and Auditability
