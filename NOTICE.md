@@ -3,7 +3,7 @@
 
 ## 1. INFORMAÇÕES PROPRIETÁRIAS (WEAD TECHNOLOGY)
 
-### Legal Notice
+Legal Notice
 
 Copyright (c) 2025 Wead Technology® All rights reserved.
 
@@ -16,7 +16,7 @@ This software contains components licensed under MIT, Apache-2.0, BSD, and other
 
 
 
-### Aviso Legal
+Aviso Legal
 
 Copyright (c) 2025 Wead Technology® Todos os direitos reservados.
 
@@ -28,6 +28,7 @@ A distribuição do binário compilado, extensão ou biblioteca (DLL/SO) é perm
 Este software contém componentes licenciados sob MIT, Apache-2.0, BSD e outras licenças permissivas. A lista completa de componentes de terceiros e seus avisos está disponível no arquivo NOTICE.md.
 
 
+
 ## 2. COMPONENTES DE TERCEIROS E ATRIBUIÇÕES
 
 Os seguintes componentes de código aberto (diretos e transitivos) estão incluídos.
@@ -37,17 +38,23 @@ O uso e redistribuição são regidos pelas licenças listadas na Seção 3.
 | :---| :---| :---| :---|
 | anyhow | 1.0.100 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | bitflags | 2.9.4 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
+| block-buffer | 0.10.4 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | cfg-if | 1.0.3 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | convert_case | 0.8.0 | MIT | Copyright (c) 2025 rutrum |
+| cpufeatures | 0.2.17 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
+| crypto-common | 0.1.6 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | darling | 0.20.11 | MIT | Copyright (c) 2017 Ted Driggs |
 | darling_core | 0.20.11 | MIT | Copyright (c) 2017 Ted Driggs |
 | darling_macro | 0.20.11 | MIT | Copyright (c) 2017 Ted Driggs |
+| digest | 0.10.7 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | equivalent | 1.0.2 | Apache-2.0 OR MIT | Copyright (c) 2016--2023 |
 | ext-php-rs | 0.14.2 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | ext-php-rs-derive | 0.11.2 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | fnv | 1.0.7 | Apache-2.0 / MIT | Copyright (c) 2017 Contributors |
+| generic-array | 0.14.7 | MIT | Copyright (c) 2015 Bartłomiej Kamiński |
 | getrandom | 0.3.3 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | hashbrown | 0.16.0 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
+| hex | 0.4.3 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | ident_case | 1.0.1 | MIT/Apache-2.0 | The above copyright notice and this permission notice shall be included in all |
 | indexmap | 2.11.4 | Apache-2.0 OR MIT | Copyright (c) 2016--2017 |
 | itoa | 1.0.15 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
@@ -72,9 +79,12 @@ O uso e redistribuição são regidos pelas licenças listadas na Seção 3.
 | serde_core | 1.0.228 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | serde_derive | 1.0.228 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | serde_json | 1.0.145 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
+| sha2 | 0.10.9 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | smallvec | 1.15.1 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | strsim | 0.11.1 | MIT | Copyright (c) 2015 Danny Guo |
+| subtle | 2.6.1 | BSD-3-Clause | Copyright (c) 2016-2017 Isis Agora Lovecruft, Henry de Valence. All rights reserved. |
 | syn | 2.0.106 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
+| typenum | 1.19.0 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | unicode-ident | 1.0.19 | (MIT OR Apache-2.0) AND Unicode-3.0 | COPYRIGHT AND PERMISSION NOTICE |
 | unicode-segmentation | 1.12.0 | MIT OR Apache-2.0 | "Licensor" shall mean the copyright owner or entity authorized by |
 | wasi | 0.14.7+wasi-0.2.4 | Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT | The above copyright notice and this permission notice |
@@ -519,7 +529,40 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
-### 3.4. LICENÇA BSL-1.0
+### 3.4. LICENÇA BSD-3-Clause
+---
+Copyright (c) 2016-2017 Isis Agora Lovecruft, Henry de Valence. All rights reserved.
+Copyright (c) 2016-2024 Isis Agora Lovecruft. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+---
+### 3.5. LICENÇA BSL-1.0
 ---
 Boost Software License - Version 1.0 - August 17th, 2003
 
@@ -546,12 +589,12 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ---
-### 3.5. LICENÇA LGPL-2.1-or-later
+### 3.6. LICENÇA LGPL-2.1-or-later
 ---
 NOT FOUND
 
 ---
-### 3.6. LICENÇA MIT
+### 3.7. LICENÇA MIT
 ---
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -578,7 +621,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 ---
-### 3.7. LICENÇA Unicode-3.0
+### 3.8. LICENÇA Unicode-3.0
 ---
 UNICODE LICENSE V3
 
@@ -621,7 +664,7 @@ dealings in these Data Files or Software without prior written
 authorization of the copyright holder.
 
 ---
-### 3.8. LICENÇA Unlicense
+### 3.9. LICENÇA Unlicense
 ---
 This is free and unencumbered software released into the public domain.
 
