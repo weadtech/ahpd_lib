@@ -1,49 +1,112 @@
-# Nome da extensão
+# =========================================================================
+# PROJECT CONFIGURATION VARIABLES
+# =========================================================================
+
+# Extension name
 EXTENSION_NAME = ahpd
 
-# Diretório de release onde estão os pacotes pré-compilados
-RELEASE_DIR = php-extension/linux
+# Release version to be downloaded (CHANGE FOR EACH NEW RELEASE)
+RELEASE_VERSION = 1.0.0
 
-# Diretório temporário para extração
-# CORREÇÃO: Usa o diretório de build do PIE
+# Base URL for GitHub Releases
+GITHUB_REPO = weadtech/ahpd_lib
+BASE_URL = https://github.com/$(GITHUB_REPO)/releases/download/$(RELEASE_VERSION)
+
+# Temporary directory for extraction
 TMP_DIR = $(top_builddir)/$(EXTENSION_NAME)_install
 
-# Obtém informações do PHP local (executado durante 'make')
+# Directory where make expects to find the .so (for the build process)
+PHP_MODULES_DIR = $(top_builddir)/modules
+
+# =========================================================================
+# PHP ENVIRONMENT VARIABLES
+# =========================================================================
+
+# Get local PHP information (executed during 'make')
 PHP_VERSION := $(shell php -r "echo PHP_VERSION;")
 PHP_MAJOR_MINOR := $(shell php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;")
 PHP_ARCH := $(shell php -r "echo PHP_INT_SIZE==8 ? 'x86_64' : 'x86';")
 PHP_THREAD := $(shell php -r "echo defined('ZTS') && ZTS ? 'ts' : 'nts';")
 
-# Diretório onde o make espera encontrar o .so
-PHP_MODULES_DIR = $(top_builddir)/modules
+# =========================================================================
+# REMOTE AND LOCAL FILE (TGZ ONLY)
+# =========================================================================
 
-# Detecta automaticamente o pacote mais recente correspondente à arquitetura e thread
-PACKAGE := $(shell ls -1 $(RELEASE_DIR)/$(EXTENSION_NAME)-*-$(PHP_THREAD)-$(PHP_ARCH).tgz 2>/dev/null | sort -V | tail -n 1)
+# Expected download filename (e.g., linux_php_ahpd-1.0.0-8.1-nts-x86_64.tgz)
+# NOTE: Adjust this pattern if the naming convention on GitHub changes.
+PACKAGE_BASENAME = linux_php_$(EXTENSION_NAME)-$(RELEASE_VERSION)-$(PHP_MAJOR_MINOR)-$(PHP_THREAD)-$(PHP_ARCH)
+PACKAGE_EXT = .tgz
+PACKAGE_FILENAME = $(PACKAGE_BASENAME)$(PACKAGE_EXT)
 
-# Target intermediário para preparar/descompactar o binário
+# Complete package URL
+PACKAGE_URL = $(BASE_URL)/$(PACKAGE_FILENAME)
+
+# Local path for the downloaded file
+DOWNLOAD_PATH = $(TMP_DIR)/$(PACKAGE_FILENAME)
+
+# Variables for 'all' and 'clean' targets
+SHLIB_NAME = $(EXTENSION_NAME).so
+SHARED_LIB = $(PHP_MODULES_DIR)/$(SHLIB_NAME)
+
+# =========================================================================
+# TARGETS
+# =========================================================================
+
+# Intermediate target to prepare/uncompress the binary
 prepare:
 	@echo "🔍 Detecting PHP environment..."
-	@echo "   PHP version: $(PHP_VERSION)"
-	@echo "   Architecture: $(PHP_ARCH)"
-	@echo "   Thread safety: $(PHP_THREAD)"
-	@echo "   Temp dir: $(TMP_DIR)"
+	@echo "    PHP version: $(PHP_VERSION)"
+	@echo "    Architecture: $(PHP_ARCH)"
+	@echo "    Thread safety: $(PHP_THREAD)"
+	@echo "    Release version: $(RELEASE_VERSION)"
+	@echo "    Expected package: $(PACKAGE_FILENAME)"
 	@echo ""
 
-	@if [ -z "$(PACKAGE)" ]; then \
-		echo "❌ No package found for this configuration in $(RELEASE_DIR)"; \
+	# 1. Preparation: Create the temporary directory
+	@mkdir -p "$(TMP_DIR)"
+
+	# 2. Download the package
+	@echo "🌐 Checking package availability: $(PACKAGE_URL)"
+	@if command -v curl >/dev/null 2>&1; then \
+		if ! curl -sfI "$(PACKAGE_URL)" >/dev/null; then \
+			echo "❌ Error: Package URL not accessible or does not exist: $(PACKAGE_URL)"; \
+			exit 1; \
+		fi; \
+	elif command -v wget >/dev/null 2>&1; then \
+		if ! wget --spider -q "$(PACKAGE_URL)"; then \
+			echo "❌ Error: Package URL not accessible or does not exist: $(PACKAGE_URL)"; \
+			exit 1; \
+		fi; \
+	else \
+		echo "❌ Error: Neither 'curl' nor 'wget' found. Please install one of them to download the assets."; \
 		exit 1; \
 	fi
 
-	@echo "📦 Using package: $(PACKAGE)"
-	@mkdir -p "$(TMP_DIR)"  # Cria o diretório temporário
-	@tar -xzf "$(PACKAGE)" -C "$(TMP_DIR)" # Extrai TODO o pacote para o TMP_DIR
+	@echo "🌐 Downloading package from: $(PACKAGE_URL)"
+	@if command -v curl >/dev/null 2>&1; then \
+		curl -L -o "$(DOWNLOAD_PATH)" "$(PACKAGE_URL)"; \
+	elif command -v wget >/dev/null 2>&1; then \
+		wget -q -O "$(DOWNLOAD_PATH)" "$(PACKAGE_URL)"; \
+	fi
 
+	# Verify successful download
+	@if [ ! -s "$(DOWNLOAD_PATH)" ]; then \
+		echo "❌ Download failed or package is empty. Check the URL and version: $(PACKAGE_URL)"; \
+		exit 1; \
+	fi
+	@echo "✅ Download complete."
+
+	# 3. Extract the package (Using tar -xzf for .tgz)
+	@echo "📦 Extracting package: $(DOWNLOAD_PATH)"
+	@tar -xzf "$(DOWNLOAD_PATH)" -C "$(TMP_DIR)" # Extract the entire package to TMP_DIR
+	
+	# 4. Locate and copy the binary
 	@echo "🔧 Locating and copying correct build..."
 	@mkdir -p "$(PHP_MODULES_DIR)"
-	@sh -c 'SRC_FILE=$$(find "$(TMP_DIR)/bin" -type f -path "*/php-$(PHP_MAJOR_MINOR)*/*.so" | head -n 1); \
+	@sh -c 'SRC_FILE=$$(find "$(TMP_DIR)" -type f -path "*.so" | head -n 1); \
 if [ -z "$$SRC_FILE" ]; then \
-    echo "❌ No suitable build found for PHP $(PHP_VERSION) in $(TMP_DIR)"; \
-    exit 1; \
+    echo "❌ No suitable build found for PHP $(PHP_VERSION) in $(TMP_DIR)"; \
+    exit 1; \
 fi; \
 echo "✅ Found compatible build: $$SRC_FILE"; \
 cp "$$SRC_FILE" "$(PHP_MODULES_DIR)/$(EXTENSION_NAME).so"; \
@@ -54,8 +117,8 @@ echo "📂 Copied to: $(PHP_MODULES_DIR)/$(EXTENSION_NAME).so"'
 		exit 1; \
 	fi
 	@echo "🎉 Pre-build preparation complete."
-
-# O target 'all' agora depende de 'prepare' para garantir que o .so esteja no lugar.
+	
+# The 'all' target depends on 'prepare' to ensure the .so is in place.
 all: prepare
 	@echo "📦 .so is ready in $(PHP_MODULES_DIR)/"
 
@@ -64,6 +127,3 @@ clean:
 	@rm -rf $(TMP_DIR)
 	@rm -f $(PHP_MODULES_DIR)/$(EXTENSION_NAME).so
 	@echo "✅ Done."
-
-SHLIB_NAME = $(EXTENSION_NAME).so
-SHARED_LIB = $(PHP_MODULES_DIR)/$(SHLIB_NAME)
