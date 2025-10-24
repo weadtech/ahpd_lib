@@ -71,7 +71,103 @@
     <script>
         var CHART_DATA; 
         
-        // CHART_DATA_PLACEHOLDER
+        CHART_DATA = {
+    "labels": [
+        "Bank 1",
+        "Bank 2",
+        "Bank 3",
+        "Bank 4"
+    ],
+    "datasets": [
+        {
+            "label": "debts %",
+            "data": [
+                19.07869522332401,
+                32.51452303086958,
+                20.032881617310533,
+                23.03722250978845
+            ],
+            "backgroundColor": "#1abc9c",
+            "rank_total": {
+                "Bank 1": 55.41566713925148,
+                "Bank 2": -1.6826168573188902,
+                "Bank 3": 41.9936800319154,
+                "Bank 4": 4.273269686152023
+            }
+        },
+        {
+            "label": "net profit USD",
+            "data": [
+                20.549666244155496,
+                14.670556740832938,
+                19.95763444917969,
+                17.83702105673168
+            ],
+            "backgroundColor": "#3498db",
+            "rank_total": {
+                "Bank 1": 55.41566713925148,
+                "Bank 2": -1.6826168573188902,
+                "Bank 3": 41.9936800319154,
+                "Bank 4": 4.273269686152023
+            }
+        },
+        {
+            "label": "portfolio growth %",
+            "data": [
+                20.707083995949677,
+                17.83702105740172,
+                20.048719587435663,
+                15.583273777184814
+            ],
+            "backgroundColor": "#9b59b6",
+            "rank_total": {
+                "Bank 1": 55.41566713925148,
+                "Bank 2": -1.6826168573188902,
+                "Bank 3": 41.9936800319154,
+                "Bank 4": 4.273269686152023
+            }
+        },
+        {
+            "label": "provision for losses USD",
+            "data": [
+                19.077023507178442,
+                34.977899170895775,
+                19.995661113548095,
+                22.705646255047533
+            ],
+            "backgroundColor": "#e67e22",
+            "rank_total": {
+                "Bank 1": 55.41566713925148,
+                "Bank 2": -1.6826168573188902,
+                "Bank 3": 41.9936800319154,
+                "Bank 4": 4.273269686152023
+            }
+        },
+        {
+            "label": "return on assets %",
+            "data": [
+                20.587531029392363,
+                0,
+                19.965103232526012,
+                20.836836401247524
+            ],
+            "backgroundColor": "#e74c3c",
+            "rank_total": {
+                "Bank 1": 55.41566713925148,
+                "Bank 2": -1.6826168573188902,
+                "Bank 3": 41.9936800319154,
+                "Bank 4": 4.273269686152023
+            }
+        }
+    ],
+    "criteria_weights": {
+        "debts %": 0.10820844076687969,
+        "net profit USD": 0.2488186717978647,
+        "portfolio growth %": 0.27488154550154764,
+        "provision for losses USD": 0.1026181017550355,
+        "return on assets %": 0.2654732401786726
+    }
+};
 
         const ctx = document.getElementById('rankingChart').getContext('2d');
 
