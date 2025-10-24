@@ -1,3 +1,15 @@
+# Changelog
+
+# 1.0.2 - 2025-10-24
+
+### Changed
+
+* **Criteria Display:** The **normalization logic for breakdown data** (`alternatives_contribution.by_criteria`) has been improved. It now applies a two-step normalization that ensures that:
+1. The lowest negative value is correctly mapped to `min` (e.g., **0**).
+2. The **sum of normalized values** for each alternative is always equal to the `total sum` (e.g., **100**).
+
+This ensures a better and more consistent display of criteria performance, especially those derived from original data that include negative values.
+
 ## Changelog
 
 # 1.0.0 - 2025-10-16

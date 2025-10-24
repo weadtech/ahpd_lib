@@ -5,7 +5,7 @@
 ![PHP API](https://img.shields.io/badge/PHP-Support%20for%20TS%20%26%20NTS-blue)
 ![PHP Version](https://img.shields.io/badge/PHP-%3E=8.1-brightgreen)
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen)
-![AHPd Core](https://img.shields.io/badge/AHPd%20Core-0.1.2-purple)
+![AHPd Core](https://img.shields.io/badge/AHPd%20Core-0.1.3-purple)
 
 **AHPd** is a **100% objective, multi-criteria decision-making system**, representing a **modern, data-driven evolution** of the classic *Analytic Hierarchy Process (AHP)* method.
 

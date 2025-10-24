@@ -1,0 +1,17 @@
+{
+    "data": {
+        "criteria": {
+            "net profit USD": "max",
+            "debts %": "min",
+            "portfolio growth %": "max",
+            "return on assets %": "max",
+            "provision for losses USD": "min"
+        },
+        "options": {
+            "Bank 1": [12500000, 3.2, 12.5, 1.8, 450000],
+            "Bank 2": [-500000, 7.9, 0.0, -0.4, 950000],
+            "Bank 3": [8420000, 2.1, 8.3, 1.2, 300000],
+            "Bank 4": [0, 5.0, -1.5, 0.3, 750000]
+        }
+    }
+}
