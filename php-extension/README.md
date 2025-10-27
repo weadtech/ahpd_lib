@@ -31,6 +31,121 @@ The table below illustrates the intended precision threshold:
 | $0.00000000000001$ | $1 \times 10^{-14}$ | 14 | **Supported, but dependent on PHP's $\text{f64}$ precision.** |
 | $1 \times 10^{-16}$ | $1 \times 10^{-16}$ | 16 | **Unreliable** (May be treated as $0$ by PHP's $\text{f64}$). |
 
+## Data Class Reference (AHP Data-Driven)
+
+The `AHPd\Data` class is responsible for managing the input data (criteria, preference direction, and alternatives/options with their attribute values) necessary for executing the **AHP Data-Driven (AHPd)** analysis.
+
+### Class and Methods
+
+```php
+namespace AHPd {
+    class Data {
+        /**
+         * Loads data from a JSON formatted string.
+         *
+         * @param string $json_string The input data in JSON string format.
+         */
+        public function fromJsonString(string $json_string): void {}
+
+        /**
+         * Loads data from an external JSON file.
+         *
+         * @param string $file_path The full path to the JSON file.
+         */
+        public function fromJsonFile(string $file_path): void {}
+
+        /**
+         * Sets the list of criteria and their preference directions.
+         *
+         * @param array $criteria_list An associative array where the key is the criterion name 
+         * and the value is the preference direction ('min' or 'max').
+         * @return mixed 
+         */
+        public function setCriteria(array $criteria_list): mixed {}
+
+        /**
+         * Retrieves the preference direction for a specified criterion.
+         *
+         * @param string $criteria_name The name of the criterion.
+         * @return string|null The preference direction ('min' or 'max'), or null if not found.
+         */
+        public function getCriteria(string $criteria_name): ?string {}
+
+        /**
+         * Returns a list (array) of all defined criteria and their preferences.
+         *
+         * @return mixed An array of all defined criteria.
+         */
+        public function listCriteria(): mixed {}
+
+        /**
+         * Defines an option (alternative) and its attribute values.
+         *
+         * @param string $name The name of the option (e.g., 'Phone A').
+         * @param array $params An associative array of attribute values, where the key is the
+         * criterion name and the value (int|float) is the attribute score.
+         * Negative values are accepted.
+         * @return mixed 
+         */
+        public function setOption(string $name, array $params): mixed {}
+
+        /**
+         * Returns an array with all attribute values defined for the specified option.
+         *
+         * @param string $option_name The name of the option.
+         * @return mixed An array of attribute values for the option.
+         */
+        public function getOption(string $option_name): mixed {}
+
+        /**
+         * Internal function used to add an Option object to the data collection.
+         *
+         * @param \AHPd\Data\Option $option The Option object to be added.
+         * @return mixed 
+         */
+        private function addOption(\AHPd\Data\Option $option): mixed {}
+
+        /**
+         * Lists the names of all defined options (alternatives).
+         *
+         * @return array A list of all option names.
+         */
+        public function listOptions(): array {}
+
+        /**
+         * Executes the AHPd calculations and returns the results.
+         *
+         * @param bool|null $rank Flag to include the final ranking (default: true).
+         * @param bool|null $contribution_global Flag to include global contribution details.
+         * @param bool|null $contribution_detailed Flag to include detailed criteria contribution.
+         * @return mixed A multi-dimensional array containing the calculation results based on flags.
+         */
+        public function run(?bool $rank, ?bool $contribution_global, ?bool $contribution_detailed): mixed {}
+
+        /**
+         * Class constructor.
+         */
+        public function __construct() {}
+    }
+}
+```
+
+## Method Documentation
+
+| Method | Description | Parameters | Return Type |
+| :--- | :--- | :--- | :--- |
+| `__construct()` | Class constructor. | None | N/A |
+| `fromJsonString()` | Loads data into the object from a JSON-formatted string. | `string $json_string`: JSON input data. | `void` |
+| `fromJsonFile()` | Loads data into the object from a specified external JSON file path. | `string $file_path`: Path to the JSON file. | `void` |
+| `setCriteria()` | Defines the criteria list and their preferred direction (`'min'` or `'max'`). | `array $criteria_list`: Associative array of criteria and preferences. | `mixed` |
+| `getCriteria()` | Retrieves the preference direction for a specific criterion. | `string $criteria_name`: The name of the criterion. | `?string` |
+| `listCriteria()` | Returns an array containing all defined criteria and their preferences. | None | `mixed` |
+| `setOption()` | Defines an alternative (option) and its attribute values corresponding to the criteria. | `string $name`: Option name (e.g., 'Product A'). `array $params`: Associative array of attribute scores. | `mixed` |
+| `getOption()` | Returns the attribute values defined for the specified option. | `string $option_name`: The name of the option. | `mixed` |
+| `listOptions()` | Returns a list of the names of all defined options. | None | `array` |
+| `run()` | Executes the **AHP Data-Driven** (AHPd) calculation process. | `?bool $rank`: Include final rank (default: `true`). `?bool $contribution_global`: Include global contribution. `?bool $contribution_detailed`: Include detailed criteria contribution. | `mixed` |
+| `addOption()` | **(Private)** Internal function to add an Option object. | `\AHPd\Data\Option $option`: The option object. | `mixed` |
+
 ## Data Reproducibility and Auditing
 
 For purposes of **auditing, testing, and ensuring consistent cross-environment reproducibility**, users are strongly advised to ignore any decimal places beyond **$10^{-12}$** (twelve decimal places).
