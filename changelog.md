@@ -1,6 +1,18 @@
-# Changelog
+## Changelog
 
-# 1.0.2 - 2025-10-24
+## 1.0.3 - 2025-10-27
+
+### Added
+
+* **JSON Loading Functions:** Two new public methods were introduced to allow loading data from **external JSON sources** into the object:
+    * `public function fromJsonString(string $json_string): void {}`
+        * This function accepts a **JSON formatted string** as input to populate the object's data.
+    * `public function fromJsonFile(string $file_path): void {}`
+        * This function accepts the **file path** of a JSON file and loads its content to populate the object's data.
+
+## Changelog
+
+## 1.0.2 - 2025-10-24
 
 ### Changed
 
@@ -12,7 +24,7 @@ This ensures a better and more consistent display of criteria performance, espec
 
 ## Changelog
 
-# 1.0.0 - 2025-10-16
+## 1.0.0 - 2025-10-16
 
 ### Added
 
