@@ -5,8 +5,8 @@
 # Extension name
 EXTENSION_NAME = ahpd
 
-# Release version to be downloaded (CHANGE FOR EACH NEW RELEASE)
-RELEASE_VERSION = 1.0.0
+# Define 1.0.3 como padrão, mas aceita sobrescrita
+RELEASE_VERSION ?= 1.0.3
 
 # Base URL for GitHub Releases
 GITHUB_REPO = weadtech/ahpd_lib
